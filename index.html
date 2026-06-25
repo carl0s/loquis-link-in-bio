@@ -93,6 +93,41 @@
       opacity: 1;
     }
 
+    /* Riquadro placeholder per completare l'ultima riga */
+    .card.placeholder {
+      background: var(--loquis-green);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .card.placeholder .ph-text {
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: 0.01em;
+    }
+
+    .card.placeholder .ph-logo {
+      width: 70%;
+      max-width: 120px;
+      height: 24px;
+      background-color: #fff;
+      -webkit-mask: url("assets/images/logo.svg") center / contain no-repeat;
+      mask: url("assets/images/logo.svg") center / contain no-repeat;
+    }
+
+    @media (max-width: 640px) {
+      .card.placeholder { gap: 6px; padding: 8px; }
+      .card.placeholder .ph-text { font-size: 10px; }
+      .card.placeholder .ph-logo { height: 16px; }
+    }
+
     /* Mobile: keep 3 per row, tighter 2px gap */
     @media (max-width: 640px) {
       :root { --grid-gap: 2px; }
@@ -131,7 +166,7 @@
       }
 
       const items = (data.result || []);
-      grid.innerHTML = items.map((it) => {
+      const cards = items.map((it) => {
         const ch = it.channel || {};
         // immagine quadrata: il "picture" top-level è 360x360 (l'avatar canale è 16:9)
         const pic = it.picture || {};
@@ -144,7 +179,21 @@
             '<span class="overlay">' + title + '</span>' +
           '</a>'
         );
-      }).join("");
+      });
+
+      // Completa l'ultima riga: se il totale non è multiplo di 3,
+      // aggiungi riquadri placeholder "continua ad ascoltare".
+      const missing = (3 - (items.length % 3)) % 3;
+      for (let i = 0; i < missing; i++) {
+        cards.push(
+          '<div class="card placeholder">' +
+            '<span class="ph-text">continua ad ascoltare</span>' +
+            '<span class="ph-logo" role="img" aria-label="Loquis"></span>' +
+          '</div>'
+        );
+      }
+
+      grid.innerHTML = cards.join("");
     }
 
     render();
