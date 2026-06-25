@@ -133,8 +133,9 @@
       const items = (data.result || []);
       grid.innerHTML = items.map((it) => {
         const ch = it.channel || {};
-        // immagine quadrata: usa la picture quadrata del canale
-        const img = ch.picture_360 || ch.picture_280 || ch.picture_720 || "";
+        // immagine quadrata: il "picture" top-level è 360x360 (l'avatar canale è 16:9)
+        const pic = it.picture || {};
+        const img = pic.picture_360 || pic.picture_280 || pic.picture_720 || "";
         const link = ch.share_url || "#";
         const title = it.title || ch.name || "";
         return (
