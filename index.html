@@ -95,37 +95,37 @@
 
     /* Riquadro placeholder per completare l'ultima riga */
     .card.placeholder {
-      background: var(--loquis-green);
+      background: rgb(15, 18, 20);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 12px;
       padding: 12px;
       text-align: center;
     }
 
     .card.placeholder .ph-text {
       color: #fff;
-      font-size: 13px;
+      font-size: 19px;
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.25;
       letter-spacing: 0.01em;
     }
 
     .card.placeholder .ph-logo {
-      width: 70%;
-      max-width: 120px;
-      height: 24px;
+      width: 85%;
+      max-width: 160px;
+      height: 34px;
       background-color: #fff;
       -webkit-mask: url("assets/images/logo.svg") center / contain no-repeat;
       mask: url("assets/images/logo.svg") center / contain no-repeat;
     }
 
     @media (max-width: 640px) {
-      .card.placeholder { gap: 6px; padding: 8px; }
-      .card.placeholder .ph-text { font-size: 10px; }
-      .card.placeholder .ph-logo { height: 16px; }
+      .card.placeholder { gap: 8px; padding: 8px; }
+      .card.placeholder .ph-text { font-size: 14px; }
+      .card.placeholder .ph-logo { height: 22px; }
     }
 
     /* Mobile: keep 3 per row, tighter 2px gap */
@@ -186,10 +186,10 @@
       const missing = (3 - (items.length % 3)) % 3;
       for (let i = 0; i < missing; i++) {
         cards.push(
-          '<div class="card placeholder">' +
+          '<a class="card placeholder" href="https://www.loquis.com" target="_blank" rel="noopener">' +
             '<span class="ph-text">continua ad ascoltare su</span>' +
             '<span class="ph-logo" role="img" aria-label="Loquis"></span>' +
-          '</div>'
+          '</a>'
         );
       }
 
