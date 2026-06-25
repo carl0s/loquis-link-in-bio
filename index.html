@@ -114,18 +114,19 @@
     }
 
     .card.placeholder .ph-logo {
-      width: 85%;
-      max-width: 160px;
-      height: 34px;
+      width: 55%;
+      max-width: 110px;
+      aspect-ratio: 585 / 403;
+      height: auto;
       background-color: #fff;
-      -webkit-mask: url("assets/images/logo.svg") center / contain no-repeat;
-      mask: url("assets/images/logo.svg") center / contain no-repeat;
+      -webkit-mask: url("assets/images/loquis-square.svg") center / contain no-repeat;
+      mask: url("assets/images/loquis-square.svg") center / contain no-repeat;
     }
 
     @media (max-width: 640px) {
       .card.placeholder { gap: 8px; padding: 8px; }
       .card.placeholder .ph-text { font-size: 14px; }
-      .card.placeholder .ph-logo { height: 22px; }
+      .card.placeholder .ph-logo { width: 60%; max-width: 80px; }
     }
 
     /* Mobile: keep 3 per row, tighter 2px gap */
